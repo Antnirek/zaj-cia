@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotografia</title>
+    <link rel="stylesheet" href="qwe.css">
+</head>
+<body>
+    <h1>Zamówienie</h1><br>
+    <label for="file">Wybierz plik:</label>
+    <input type="file" id="file"><br><br>
+    <label for="in1">Liczba Kopii:</label>
+    <input type="number" id="in1"><br><br>
+    <input type="radio" name="red" id="rad1">
+    <label for="rad1">Papier błyszczący</label><br><br>
+    <input type="radio"name="red" id="rad2">
+    <label for="rad2">Papier matowy</label><br><br>
+    <button type="submit" id="btn">Dodaj do koszyka</button>
+
+    <div id="koszyk">
+
+    </div>
+
+    <script>
+        const btn = document.querySelector("#btn")
+
+        btn.addEventListener("click", function(){
+            let img = document.createElement("img")
+            let kopie = document.getElementById("in1").value
+            let paragraf = document.createElement("p")
+            let cena
+            let radio1 = document.querySelector("rad1")
+            let radio2 = document.querySelector("rad2")
+            let radio = document.querySelector("input[name='red']:checked")
+            paragraf.innerText = "Liczba kopii: " + kopie
+            img.src = URL.createObjectURL(
+                document.querySelector("#file").files[0]
+            )
+            if(radio = radio1){
+                cena = 1.5
+                let suma = cena * kopie
+                paragraf.innerText ="Cena to:" + suma
+            }
+            if(radio = radio2){
+                cena = 2
+                let suma = cena * kopie
+                paragraf.innerText ="Cena to:" + suma
+            }
+            koszyk.appendChild(img)
+            koszyk.appendChild(paragraf)
+        })
+        
+    </script>
+</body>
+</html>
