@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="a" type="number">
+    <input id="b" type="number">
+    <button onclick="wyswietl()" id="bnt">liczby</button>
+    <button onclick="pitagoras()">pit</button>
+
+    <p id="p"></p>
+    <script>
+        function wyswietl(){
+            let a = parseInt(document.querySelector("#a").value)
+            let b = parseInt(document.querySelector("#b").value)
+            let c = document.querySelector("#p")
+            alert(a + b)
+            console.log(a-b)
+            c.innerHTML = a*b
+
+        }
+        function pitagoras(){
+            let a = parseInt(document.querySelector("#a").value)
+            let b = parseInt(document.querySelector("#b").value)
+            let c = document.querySelector("#p")
+            let pit = Math.pow(a,2) + Math.pow(b,2)
+            let wynik = Math.sqrt(pit)
+            c.innerHTML = wynik
+        }
+    </script>
+</body>
+
+</html>
