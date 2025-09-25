@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        table{
+            height: 300px;
+            width: 300px;
+        }
+        tbody{
+            border: solid black 3px;
+        }
+        tr{
+            border: solid black 2px;
+        }
+        td{
+            border: solid black 1px;
+            background-color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <main>
+        Kolor: <input id="color">
+        <button onclick="pobierz()">Click Me</button>
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>   
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+<script>
+    function pobierz(){
+     let color = document.querySelector("#color").value
+     const tds = document.querySelectorAll("td")
+     tds.forEach(td => {
+        td.addEventListener("click", function(){
+            if(this.style.backgroundColor == "white"){
+                this.style = "background-color: "+ color +";"
+            }
+            else{
+                this.style = "background-color: white"
+            }
+        })
+   
+    })
+}
+</script>
+</body>
+</html>
