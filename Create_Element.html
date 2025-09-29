@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Wpisz element: <input id="element">
+    <button onclick="stworz()">Stwórz</button>
+<script>
+    function stworz(){
+        let element = document.querySelector("#element").value
+        const element1 = document.createElement(element)
+        document.body.append(element1)
+        element1.style.backgroundColor = "#4BA2EA"
+        element1.style.height = "50px"
+        element1.style.width = "50px"
+    }
+</script>
+</body>
+</html>
