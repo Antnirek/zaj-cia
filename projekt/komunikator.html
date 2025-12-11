@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sowa – Komunikator</title>
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box;}
+        body {
+            background:#e9ebec;
+            font-family: Tahoma, Arial, sans-serif;
+            min-height:100vh;
+        }
+        header {
+            height:70px;
+            background:#003366;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index:100;
+            box-shadow:0 3px 10px rgba(0,0,0,0.3);
+        }
+        .logo {
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            color:white;
+            font-size:38px;
+            font-weight:bold;
+        }
+        .menu {
+            position:absolute;
+            right:20px;
+            top:50%;
+            transform:translateY(-50%);
+        }
+        .menu select {
+            padding:10px 14px;
+            font-size:17px;
+            background:#0066cc;
+            color:white;
+            border:none;
+            border-radius:7px;
+            cursor:pointer;
+        }
+        .nowy-post {
+            background:white;
+            padding:20px;
+            margin:80px auto 20px auto;
+            width:680px;
+            border-radius:10px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.1);
+            border:1px solid #ccc;
+        }
+        textarea {
+            width:100%;
+            height:90px;
+            padding:12px;
+            font-size:16px;
+            border:2px solid #003366;
+            border-radius:8px;
+            resize:none;
+            font-family:inherit;
+        }
+        input[type="submit"] {
+            margin-top:12px;
+            float:right;
+            background:#003366;
+            color:white;
+            padding:10px 25px;
+            border:none;
+            border-radius:7px;
+            font-size:16px;
+            cursor:pointer;
+        }
+        input[type="submit"]:hover {background:#0055aa;}
+        .wall {
+            width:700px;
+            margin:0 auto;
+            padding-bottom:100px;
+        }
+        #chat {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            margin-left: 450px;
+            margin-top: 80px;
+        }
+        #inputBox {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            margin-left: 450px;
+        }
+        #message {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #sendBtn {
+            padding: 10px 15px;
+            background:#0055aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Komunikator</div>
+    <div class="menu">
+        <select onchange="location = this.value;">
+            <option value="komunikator.html">Komunikator</option>
+            <option value="Strona_Glowna.php">Tablica</option>
+            <option value="wyloguj.php">Wyloguj</option>
+        </select>
+    </div>
+</header>
+<div id="chat"></div>
+
+<div id="inputBox">
+    <input type="text" id="message" placeholder="Napisz wiadomość..." />
+    <button id="sendBtn">Wyślij</button>
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const input = document.getElementById("message");
+const btn = document.getElementById("sendBtn");
+
+
+const botReplies = [
+    "Cześć! Jak mogę pomóc?",
+    "Interesujące, opowiedz więcej!",
+    "Nie jestem pewien, ale brzmi ciekawie.",
+    "Możliwe! Co o tym myślisz?",
+    "Haha, dobre!"
+];
+
+function addMessage(text, sender) {
+    const div = document.createElement("div");
+    div.textContent = sender + ": " + text;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function botAnswer() {
+    const reply = botReplies[Math.floor(Math.random() * botReplies.length)];
+    addMessage(reply, "Bot");
+}
+
+
+function sendMessage() {
+    const text = input.value.trim();
+    if(text === "") return;
+
+    addMessage(text, "Ty");
+    input.value = "";
+
+    setTimeout(botAnswer, 500);
+}
+
+
+btn.addEventListener("click", sendMessage);
+
+input.addEventListener("keypress", function(e) {
+    if(e.key === "Enter") sendMessage();
+});
+</script>
+
+
+
+</body>
+</html>
